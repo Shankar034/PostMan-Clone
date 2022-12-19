@@ -6,16 +6,14 @@ console.log("This is my PostMan Clone Project");
 //Utility Function
 //1.Utility function to get DOm element from string
 
-function getElementFromString(string){
-    let div = document.createElement('div')
-    div.innerHTML = string;
-    return string.firstElementChild;
-
+function getElementFromString(string) {
+  let div = document.createElement("div");
+  div.innerHTML = string;
+  return div.firstElementChild;
 }
 //Initialize no of parameters
 
 let addedParamCount = 0;
-
 
 // parametersBox.style.display = 'none';
 
@@ -40,8 +38,10 @@ jsonRadio.addEventListener("click", () => {
 let addParam = document.getElementById("addParam");
 addParam.addEventListener("click", () => {
   let params = document.getElementById("params");
-  let string = `<div class="form-row">
-    <label for="url" class="col-sm-2 col-form-label">Parameter ${addedParamCount + 2}</label>
+  let string = `<div class="form-row my-2">
+    <label for="url" class="col-sm-2 col-form-label">Parameter ${
+      addedParamCount + 2
+    }</label>
     <div class="col-md-4">
       <input
         type="text"
@@ -58,12 +58,33 @@ addParam.addEventListener("click", () => {
         placeholder="Enter Parameter ${addedParamCount + 2} Value"
       />
     </div>
-    <button id="deleteParam" class="btn btn-primary">-</button>
+    <button  class="btn btn-primary deleteParam">-</button>
   </div>`;
 
   //Convert the element string to DOM node
 
   let paramElement = getElementFromString(string);
-  console.log(paramElement);
-  addedParamCount ++;
+  params.appendChild(paramElement);
+
+  //Add an event listener to remove the parameter on  clicking - button
+  let deleteParam = document.getElementsByClassName("deleteParam");
+  for (item of deleteParam) {
+    item.addEventListener("click", (e) => {
+      alert("Are you sure to delete this file");
+      e.target.parentElement.remove();
+    });
+  }
+
+  addedParamCount++;
 });
+
+
+//If the user clicks on submit button
+
+let submit = document.getElementById('submit');
+submit.addEventListener('click', ()=>{
+    //Show please wait in the response box to request patience from the user
+
+
+    
+})
