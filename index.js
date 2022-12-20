@@ -85,7 +85,9 @@ let submit = document.getElementById('submit');
 submit.addEventListener('click', ()=>{
     //Show please wait in the response box to request patience from the user
   
-    document.getElementById('responseJsonText').value = "Please wait... Fetching response..."
+    // document.getElementById('responseJsonText').value = "Please wait... Fetching response..."
+
+    document.getElementById('responsePrism').innerHTML =  "Please wait... Fetching response..."
 
 
     //Fetch all the values use has entered
@@ -137,7 +139,26 @@ submit.addEventListener('click', ()=>{
 
       .then(response =>response.text())
       .then((text)=>{
-        document.getElementById('responseJsonText').value = text;
+        // document.getElementById('responseJsonText').value = text;
+        document.getElementById('responsePrism').innerHTML = text;
+        Prism.highlightAll();
+
+      })
+    }
+    else{
+      fetch(url, {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        }
+      })
+
+      .then(response =>response.text())
+      .then((text)=>{
+        // document.getElementById('responseJsonText').value = text;
+        document.getElementById('responsePrism').innerHTML = text;
+        Prism.highlightAll();
       })
     }
     

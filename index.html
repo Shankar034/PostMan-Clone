@@ -15,7 +15,12 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-
+    <link rel="stylesheet" href="prism.css" />
+    <style>
+      #responsePre{
+        max-height: 500px;;
+      }
+    </style>
     <title>Hello, world!</title>
   </head>
   <body>
@@ -152,8 +157,8 @@
           </div>
           <button id="addParam" class="btn btn-primary">+</button>
         </div>
+        <div id="params"></div>
       </div>
-      <div id="params"></div>
 
       <!-- JSON Request Box- This will hide on clicking parameter option in content type -->
 
@@ -167,6 +172,10 @@
             id="requestJsonText"
             rows="3"
           ></textarea>
+          <!-- <pre class="language-javascript">
+            <code id="reponsePrism" class="language-javascript">
+          </code> -->
+        </pre>
         </div>
       </div>
 
@@ -185,15 +194,18 @@
           >Response</label
         >
         <div class="col-sm-10">
-          <textarea
+          <!-- <textarea
             class="form-control"
             id="responseJsonText"
             rows="3"
             
-          >Your response will appear here</textarea>
+          >Your response will appear here</textarea> -->
+          <pre id="responsePre" class="language-javascript">
+            <code id="responsePrism" class="language-javascript">
+          </code>
+        </pre>
         </div>
       </div>
-
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
@@ -210,6 +222,7 @@
       crossorigin="anonymous"
     ></script>
     <script src="index.js"></script>
+    <script src="prism.js"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
